@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +43,17 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bitcount Prop Double';
+  src: url('./assets/fonts/BitcountPropDouble.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
