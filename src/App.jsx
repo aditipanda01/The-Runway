@@ -96,7 +96,8 @@ import a6 from './assets/a6.jpeg';
 import a7 from './assets/a7.jpeg';
 import a8 from './assets/a8.jpeg';
 import a9 from './assets/a9.jpeg';
-
+import ShoesPage from "./ShoesPage";
+import JewelleryPage from "./Jewellery";
 
 
 function Header() {
@@ -385,6 +386,14 @@ function CategoriesSection() {
                 <Link to="/dress" style={{ textDecoration: 'none' }}>
                   <PhoneFrame img={cat.img} alt={cat.name} />
                 </Link>
+              ) : cat.name === 'Shoes' ? (
+                <Link to="/shoes" style={{ textDecoration: 'none' }}>
+                  <PhoneFrame img={cat.img} alt={cat.name} />
+                </Link>
+              ) : cat.name === 'Jewellery' ? (
+                <Link to="/jewellery" style={{ textDecoration: 'none' }}>
+                  <PhoneFrame img={cat.img} alt={cat.name} />
+                </Link>
               ) : (
                 <PhoneFrame img={cat.img} alt={cat.name} />
               )}
@@ -516,6 +525,11 @@ const imageModules = import.meta.glob('./assets/dress-photos/dress/*.jpeg', { ea
 // Sort keys to ensure images are in filename order
 const sortedKeys = Object.keys(imageModules).sort();
 const dressImages = sortedKeys.map(key => imageModules[key].default);
+
+// Dynamically import all JPEGs in the jewellery-photos/jewellery folder using Vite's import.meta.glob
+const jewelleryImageModules = import.meta.glob('./assets/jewellery-photos/jewellery/*.jpeg', { eager: true });
+const jewellerySortedKeys = Object.keys(jewelleryImageModules).sort();
+const jewelleryImages = jewellerySortedKeys.map(key => jewelleryImageModules[key].default);
 
 // DesignerInspirationCard component
 function DesignerInspirationCard({ designerName, mainImage, avatarImage, inspirationText, instagramHandle }) {
@@ -811,13 +825,75 @@ function AllureBanner() {
   );
 }
 
+function JewelleryAllureBanner() {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: 180,
+        background: 'rgba(30,30,30,0.3)',
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        color: '#fff',
+        fontFamily: "'Cormorant Garamond', serif",
+        letterSpacing: 6,
+        marginBottom: 0,
+      }}
+    >
+      {/* Top line */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 32,
+          left: '10%',
+          width: '80%',
+          height: 1,
+          background: 'rgba(255,255,255,0.4)',
+        }}
+      />
+      {/* Bottom line */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 32,
+          left: '10%',
+          width: '80%',
+          height: 1,
+          background: 'rgba(255,255,255,0.4)',
+        }}
+      />
+      {/* Main text */}
+      <div style={{ fontSize: 44, fontWeight: 600, letterSpacing: 12, zIndex: 1, marginBottom: 8 }}>
+        JEWELLERY ALLURE
+      </div>
+      <div
+        style={{
+          fontSize: 20,
+          fontWeight: 400,
+          letterSpacing: 2,
+          zIndex: 1,
+          textAlign: 'center',
+          fontFamily: 'Montserrat, Arial, sans-serif',
+          marginTop: 0,
+        }}
+      >
+        Sparkle, elegance, and timeless beauty.
+      </div>
+    </div>
+  );
+}
+
 function DressPage() {
   // Use all images from dressImages array
   return (
     <>
       <div style={{
         width: '100vw',
-        minHeight: '3000vh',
+        minHeight: '100vh',
         background: '#000',
         display: 'flex',
         flexDirection: 'column',
@@ -859,10 +935,16 @@ function DressPage() {
         </div>
         {/* Designer Inspiration Grid */}
         <DesignerInspirationGrid images={dressImages} />
+        {/* Footer */}
+        <footer style={{ width: '100%', background: '#222', color: '#fff', textAlign: 'center', padding: '32px 0 20px 0', fontFamily: 'Montserrat, Arial, sans-serif', fontSize: 16, letterSpacing: 1, marginTop: 40 }}>
+          &copy; {new Date().getFullYear()} Designer Gallery. All rights reserved.
+        </footer>
       </div>
     </>
   );
 }
+
+
 
 function App() {
   return (
@@ -873,7 +955,9 @@ function App() {
         <Route path="/design/:id" element={<DesignDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dress" element={<DressPage />} />
+        <Route path="/jewellery" element={<JewelleryPage />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/shoes" element={<ShoesPage />} />
       </Routes>
     </Router>
   );
