@@ -98,6 +98,8 @@ import a8 from './assets/a8.jpeg';
 import a9 from './assets/a9.jpeg';
 import ShoesPage from "./ShoesPage";
 import JewelleryPage from "./Jewellery";
+import Profile from './Profile';
+import LoginSignup from './LoginSignup';
 
 
 function Header() {
@@ -136,7 +138,7 @@ function Header() {
       }}>
         <Link to="/" style={{ color: '#181818', textDecoration: 'none' }}>Home</Link>
         <Link to="/blog" style={{ color: '#181818', textDecoration: 'none' }}>Blog</Link>
-        <Link to="/login" style={{ color: '#181818', textDecoration: 'none' }}>Profile</Link>
+        <Link to="/login-signup" style={{ color: '#181818', textDecoration: 'none' }}>Profile</Link>
       </nav>
     </header>
   );
@@ -954,10 +956,12 @@ function App() {
         <Route path="/submit" element={<SubmitDesign />} />
         <Route path="/design/:id" element={<DesignDetail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/login-signup" element={<LoginSignup />} />
         <Route path="/dress" element={<DressPage />} />
         <Route path="/jewellery" element={<JewelleryPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/shoes" element={<ShoesPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
