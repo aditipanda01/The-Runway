@@ -5,8 +5,9 @@ import pic1 from './assets/pic1.jpeg';
 import pic2 from './assets/pic2.png';
 import pic3 from './assets/pic3.jpeg';
 import blob from './assets/blob.svg';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css"; // if used
+
 import Slider from "react-slick";
 
 import fashionBg from './assets/fashion-bg.jpeg';
